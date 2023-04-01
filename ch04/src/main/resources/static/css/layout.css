@@ -1,0 +1,7 @@
+.form-box {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 100px auto;
+}
