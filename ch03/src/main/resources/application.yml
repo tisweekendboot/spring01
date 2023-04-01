@@ -1,0 +1,6 @@
+server:
+  port: 9091
+
+#동적 파일은 서버에서 내려준 데이터를 처리할 수 있다.
+#jsp(자바코드 사용 가능)
+#thymeleaf, mustache, freemarker
