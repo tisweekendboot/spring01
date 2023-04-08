@@ -16,4 +16,10 @@ public class MemberServiceImpl implements MemberService {
     int result = memberDao.insertMember(memberDto);
     return result;
   }
+
+  @Override
+  public int idCheck(MemberDto memberDto) {
+    int result = memberDao.idCheck(memberDto);
+    return result;
+  }
 }

@@ -8,14 +8,17 @@
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>MEMBER JOIN</h2>
-        <form action="/member/joinProcess" method="post">
+        <form action="/member/join" method="post">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="USER ID" name="userId" />
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" />
+              <button class="btn btn-secondary" type="button" id="btnIdCheck">ID 중복검사</button>
+            </div>
           </div>
 
           <div class="mb-3">
-            <label for="exampleFormControlInput2" class="form-label">USER ID</label>
+            <label for="exampleFormControlInput2" class="form-label">USER PW</label>
             <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" />
           </div>
           <div class="mb-3">
@@ -37,6 +40,33 @@
           </div>
         </form>
       </div>
+
+      <script>
+        $("#btnIdCheck").on("click", function () {
+          //alert("id check");
+          //ajax
+          const sendUserId = $("#userId").val();
+          $.ajax({
+            url: "/member/idCheck",
+            data: { userId: sendUserId },
+            type: "post",
+            success: function (response) {
+              //console.log(response);
+              if (response.result > 0) {
+                alert("쓸 수 없는 아이디입니다.");
+              } else {
+                alert("사용가능한 아이디입니다.");
+              }
+            },
+            fail: function (err) {
+              console.log(err);
+            },
+            error: function (err) {
+              console.log(err);
+            },
+          });
+        });
+      </script>
     </div>
   </body>
 </html>
