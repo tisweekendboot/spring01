@@ -3,6 +3,7 @@ package com.jjang051.ch04.controller;
 import com.jjang051.ch04.dao.MemberDao;
 import com.jjang051.ch04.dto.MemberDto;
 import java.util.List;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Log4j2
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -41,7 +43,10 @@ public class MemberController {
   }
 
   @GetMapping("/info")
-  public String info() {
+  public String info(Model model, String userId) {
+    log.info("====" + userId);
+    MemberDto memberInfo = memberDao.getOneMember(userId);
+    model.addAttribute("memberInfo", memberInfo);
     return "/member/info";
   }
 }

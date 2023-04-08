@@ -23,9 +23,9 @@
         <tbody>
           <tr>
             <td>1</td>
-            <th>jjang051</th>
-            <td>장성호</td>
-            <td>1234</td>
+            <th th:text="${memberInfo.userId}">jjang051</th>
+            <td th:text="${memberInfo.userName}">장성호</td>
+            <td th:v-text="${memberInfo.userPw}">1234</td>
           </tr>
         </tbody>
       </table>

@@ -11,8 +11,8 @@
     select * from member
   </select>
   
-  <select id="getOneMember" resultType="com.jjang051.ch04.dto.MemberDto">
-    select * from member where userid = 'hong'
+  <select id="getOneMember" resultType="com.jjang051.ch04.dto.MemberDto" parameterType="String">
+    select * from member where userid = #{userId}
   </select>
 
 </mapper>

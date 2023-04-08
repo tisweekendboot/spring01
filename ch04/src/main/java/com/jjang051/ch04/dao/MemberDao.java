@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberDao {
   int insertMember(MemberDto memberDto);
   List<MemberDto> getAllMember();
-  MemberDto getOneMember();
+  MemberDto getOneMember(String userId);
 }

@@ -12,6 +12,7 @@ spring:
     username: tisweekend  
     password: 1234
 
+#ERROR > WARN > DEBUG > INFO > TRACE
 logging:
   level:
     root: INFO  

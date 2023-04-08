@@ -24,7 +24,12 @@
           <tr th:each="member : ${memberList}">
             <td th:text="${memberStat.count}">1</td>
             <th scope="row" th:text="${member.userId}">1</th>
-            <td><a href="/member/info" th:text="${member.userName}">Mark</a></td>
+            <td>
+              <!-- prettier-ignore -->
+              <a href="/member/info?userId=hong" 
+                 th:text="${member.userName}" 
+                 th:href="@{/member/info(userId=${member.userId})}">Mark</a>
+            </td>
             <td th:text="${member.userPw}">Otto</td>
           </tr>
         </tbody>
