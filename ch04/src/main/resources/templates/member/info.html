@@ -25,7 +25,11 @@
             <td>1</td>
             <th th:text="${memberInfo.userId}">jjang051</th>
             <td th:text="${memberInfo.userName}">장성호</td>
-            <td th:v-text="${memberInfo.userPw}">1234</td>
+            <td th:text="${memberInfo.userPw}">1234</td>
+            <td>
+              <a href="/member/delete" th:href="@{/member/delete(userId=${memberInfo.userId})}" class="btn btn-danger">회원탈퇴</a>
+              <a href="/member/modify" class="btn btn-danger">회원수정</a>
+            </td>
           </tr>
         </tbody>
       </table>

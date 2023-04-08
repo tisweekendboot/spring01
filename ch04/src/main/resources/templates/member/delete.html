@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEMBER JOIN</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <script src="/js/bootstrap.bundle/min.js"></script>
+  </head>
+  <body>
+    <div class="form-box">
+      <form action="/member/delete" method="post">
+        <div class="form-floating mb-3">
+          <input type="hidden" name="userId" value="jjang051" th:value="${param.userId}" />
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="userPw" />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <hr />
+        <div class="text-center">
+          <button class="btn btn-lg btn-primary">DELETE</button>
+          <button class="btn btn-lg btn-secondary">RESET</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

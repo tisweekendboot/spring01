@@ -14,5 +14,9 @@
   <select id="getOneMember" resultType="com.jjang051.ch04.dto.MemberDto" parameterType="String">
     select * from member where userid = #{userId}
   </select>
+  
+  <delete id="deleteMember" parameterType="com.jjang051.ch04.dto.MemberDto">
+    delete from member where userid = #{userId} and userpw = #{userPw}
+  </delete>
 
 </mapper>

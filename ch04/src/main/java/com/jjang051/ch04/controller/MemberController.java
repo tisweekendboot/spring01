@@ -49,4 +49,15 @@ public class MemberController {
     model.addAttribute("memberInfo", memberInfo);
     return "/member/info";
   }
+
+  @GetMapping("/delete")
+  public String delete() {
+    return "/member/delete";
+  }
+
+  @PostMapping("/delete")
+  public String deleteProcess(MemberDto memberDto) {
+    int result = memberDao.deleteMember(memberDto);
+    return "redirect:/member/list";
+  }
 }

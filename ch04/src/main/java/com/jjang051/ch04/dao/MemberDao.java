@@ -9,4 +9,5 @@ public interface MemberDao {
   int insertMember(MemberDto memberDto);
   List<MemberDto> getAllMember();
   MemberDto getOneMember(String userId);
+  int deleteMember(MemberDto memberDto);
 }
