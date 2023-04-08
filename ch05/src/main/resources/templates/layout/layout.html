@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY APP</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1><a href="">LOGO</a></h1>
+        <ul class="nav nav-underline">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/member/join">JOIN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">BOARD</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- 여기에 공통요소를 제외한 나머지 것들 가져다 쓰기.... -->
+      <div class="contents" layout:fragment="contents"></div>
+    </main>
+
+    <footer class="footer">
+      <p>all copyrights reserved by jjang051</p>
+    </footer>
+  </body>
+</html>

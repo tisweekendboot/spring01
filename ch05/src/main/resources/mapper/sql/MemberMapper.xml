@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjang051.ch05.dao.MemberDao">
+  <insert id="insertMember" parameterType="memberDto">
+    insert into member02 values (member02_seq.nextval,#{userId},#{userPw},#{userName},#{userEmail},#{userAddr},SYSDATE)
+  </insert>
+</mapper>
