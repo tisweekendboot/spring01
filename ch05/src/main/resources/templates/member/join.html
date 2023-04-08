@@ -8,13 +8,14 @@
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>MEMBER JOIN</h2>
-        <form action="/member/join" method="post">
+        <form action="/member/join" th:object="${memberDto}" method="post">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" />
               <button class="btn btn-secondary" type="button" id="btnIdCheck">ID 중복검사</button>
             </div>
+            <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error">에러 메세지 출력</p>
           </div>
 
           <div class="mb-3">

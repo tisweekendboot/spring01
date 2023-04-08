@@ -4,11 +4,14 @@ import com.jjang051.ch05.dto.MemberDto;
 import com.jjang051.ch05.service.MemberService;
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,19 +26,24 @@ public class MemberController {
   MemberService memberService;
 
   @GetMapping("/join")
-  public String join() {
+  public String join(Model model) {
+    model.addAttribute("memberDto", new MemberDto());
     return "/member/join";
   }
 
   @PostMapping("/join")
-  public String joinProcess(MemberDto memberDto) {
+  //@ResponseBody
+  public String joinProcess(
+    @Valid MemberDto memberDto,
+    BindingResult bindingResult
+  ) {
     log.info("============memberDto===============");
     log.info(memberDto);
-    int result = memberService.insertMember(memberDto);
-    if (result > 0) {
-      return "redirect:/";
+    if (bindingResult.hasErrors()) {
+      return "/member/join";
     }
-    return "/member/join";
+    int result = memberService.insertMember(memberDto);
+    return "redirect:/";
   }
 
   /*
