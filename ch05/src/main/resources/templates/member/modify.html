@@ -8,12 +8,11 @@
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>MEMBER JOIN</h2>
-        <form action="/member/join" th:object="${memberDto}" method="post">
+        <form action="/member/modify" th:object="${memberDto}" method="post">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" th:value="${memberDto.userId}" />
-              <button class="btn btn-secondary" type="button" id="btnIdCheck">ID 중복검사</button>
+              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" th:value="${memberDto.userId}" readonly />
             </div>
             <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error">에러 메세지 출력</p>
           </div>
@@ -31,7 +30,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlInput3" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" th:value="${memberDto.userEmail}" />
+            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" th:value="${memberDto.userEmail}" readonly />
             <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3 input-group">
@@ -48,8 +47,9 @@
           </div>
 
           <div class="text-center">
-            <button class="btn btn-primary">JOIN</button>
+            <button class="btn btn-primary">MODIFY CONFIRM</button>
             <button class="btn btn-secondary" type="reset">RESET</button>
+            <a class="btn btn-secondary" href="/">HOME</a>
           </div>
         </form>
       </div>

@@ -81,9 +81,28 @@ public class MemberController {
     MemberDto loggedMember = memberService.loginMember(memberDto);
     if (loggedMember != null) {
       session.setAttribute("loggedMember", loggedMember);
+      log.info(loggedMember.toString());
       return "redirect:/";
     }
     //model.addAttribute("loggedMember", loggedMember);
     return "redirect:/member/login";
+  }
+
+  @GetMapping("/logout")
+  public String logOut(HttpSession session) {
+    session.invalidate(); // session삭제
+    return "redirect:/";
+  }
+
+  @GetMapping("/info")
+  public String info() {
+    return "/member/info";
+  }
+
+  @GetMapping("/modify")
+  public String modify(HttpSession session) {
+    //session.invalidate(); // session삭제
+    // 회원id(x),  이름 (0), 이메일 안됨(x), 주소(0)
+    return "/member/modify";
   }
 }

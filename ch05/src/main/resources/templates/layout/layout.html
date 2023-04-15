@@ -21,8 +21,12 @@
             <a class="nav-link active" aria-current="page" href="#">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" th:text="${session.loggedMember.userName}"></a>
+            <a class="nav-link" href="/member/info" th:text="${session.loggedMember.userName}"></a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/member/logout">LOG OUT</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#">BOARD</a>
           </li>

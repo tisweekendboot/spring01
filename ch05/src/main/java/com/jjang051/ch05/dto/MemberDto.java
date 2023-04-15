@@ -30,7 +30,7 @@ public class MemberDto {
 
   private String regDate;
 
-  private int userZipcode;
+  private int zipcode;
 
   private String userAddrEtc;
 }

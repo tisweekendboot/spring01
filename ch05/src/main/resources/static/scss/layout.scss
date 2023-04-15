@@ -58,3 +58,17 @@ a {
     @include longShadow(30, darken($color, 10));
   }
 }
+.table {
+  border-top: 2px solid #000;
+  .th {
+    width: 150px;
+    background-color: #eee;
+  }
+  .td {
+    padding: 15px;
+  }
+  th,
+  td {
+    padding: 15px;
+  }
+}
