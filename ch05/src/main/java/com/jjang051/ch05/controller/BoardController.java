@@ -53,4 +53,24 @@ public class BoardController {
     model.addAttribute("boardDto", boardDto);
     return "/board/view";
   }
+
+  @GetMapping("/reply")
+  public String reply(Model model) {
+    model.addAttribute("boardDto", new BoardDto());
+    return "/board/reply";
+  }
+
+  @PostMapping("/reply")
+  public String replyProcess(
+    @Valid BoardDto boardDto,
+    BindingResult bindingResult,
+    Model model
+  ) {
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("boardDto", boardDto);
+      return "/board/write";
+    }
+    int result = boardService.replyBoard(boardDto);
+    return "redirect:/board/list";
+  }
 }

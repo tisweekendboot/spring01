@@ -10,4 +10,7 @@ public interface BoardDao {
   List<BoardDto> getBoardList();
   BoardDto getBoardOne(int no);
   int updateHit(int no);
+  int getMaxGroup();
+  int updateLevel(BoardDto boardDto);
+  int replyBoard(BoardDto boardDto);
 }

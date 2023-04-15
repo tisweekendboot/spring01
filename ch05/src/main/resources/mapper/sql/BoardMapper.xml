@@ -19,8 +19,25 @@
     )
   </insert>
   
+  <insert id="replyBoard" parameterType="boardDto">
+    insert into board values (
+      BOARD_SEQ.NEXTVAL,
+      #{userName},
+      #{title},
+      #{contents},
+      #{boardGroup},
+      #{boardLevel},
+      #{boardStep},
+      SYSDATE,
+      0,
+      1,
+      #{userPw}
+    )
+  </insert>
+  
   <select id="getBoardList" resultType="boardDto">
-    select * from board
+    <!-- select * from board order by no desc -->
+    select * from board order by boardGroup desc, boardLevel asc
   </select>
   <select id="getBoardOne" resultType="boardDto" parameterType="Integer">
     select * from board where no = #{no}
@@ -28,4 +45,20 @@
   <update id="updateHit"  parameterType="Integer">
     update board set hit = hit + 1 where  no = #{no}
   </update>
+  
+  <select id="getMaxGroup" resultType="Integer">
+    select nvl(max(boardgroup),1) as max from board
+  </select>
+  
+  <update id="updateLevel" parameterType="boardDto">
+    <![CDATA[
+      update board set boardLevel = boardLevel + 1
+        where boardGroup = #{boardGroup} and boardLevel > #{boardLevel}
+    ]]>
+  </update>
+  
+  
+  
+  
+  
 </mapper>

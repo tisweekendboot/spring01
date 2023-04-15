@@ -15,6 +15,9 @@
             <col />
             <col />
             <col />
+            <col />
+            <col />
+            <col />
           </colgroup>
           <thead>
             <tr>
@@ -23,6 +26,9 @@
               <th scope="col">WRITER</th>
               <th scope="col">DATE</th>
               <th scope="col">HIT</th>
+              <th scope="col">GROUP</th>
+              <th scope="col">LEVEL</th>
+              <th scope="col">STEP</th>
             </tr>
           </thead>
           <tbody>
@@ -34,6 +40,9 @@
               <td th:text="${item.userName}">Otto</td>
               <td th:text="${item.regDate}">@mdo</td>
               <td th:text="${item.hit}">@mdo</td>
+              <td th:text="${item.boardGroup}">@mdo</td>
+              <td th:text="${item.boardLevel}">@mdo</td>
+              <td th:text="${item.boardStep}">@mdo</td>
             </tr>
           </tbody>
         </table>
