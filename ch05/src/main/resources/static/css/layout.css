@@ -73,3 +73,13 @@ a {
 #contents {
   min-height: 300px;
 }
+
+.error {
+  font-size: 14px;
+  color: #f00;
+  margin-top: 10px;
+}
+.error:before {
+  content: "*";
+  display: inline-block;
+}

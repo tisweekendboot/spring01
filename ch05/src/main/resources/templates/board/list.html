@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.thymeleaf.org" layout:decorate="~{/layout/layout.html}">
+  <head>
+    <title>HOME</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container">
+        <!-- 여기서 부터 달라지는 내용 -->
+        <h2>BOARD LIST</h2>
+        <table class="table table-striped">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">TITLE</th>
+              <th scope="col">WRITER</th>
+              <th scope="col">DATE</th>
+              <th scope="col">HIT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="item : ${boardList}">
+              <th th:text="${item.no}">1</th>
+              <td>
+                <a href="" th:text="${item.title}" th:href="@{/board/view(no=${item.no})}"></a>
+              </td>
+              <td th:text="${item.userName}">Otto</td>
+              <td th:text="${item.regDate}">@mdo</td>
+              <td th:text="${item.hit}">@mdo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-5 text-center">
+          <a href="/board/write" class="btn btn-primary">WRITE</a>
+          <a href="/" class="btn btn-secondary">HOME</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

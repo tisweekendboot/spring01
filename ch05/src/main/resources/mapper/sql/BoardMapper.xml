@@ -18,4 +18,14 @@
       #{userPw}
     )
   </insert>
+  
+  <select id="getBoardList" resultType="boardDto">
+    select * from board
+  </select>
+  <select id="getBoardOne" resultType="boardDto" parameterType="Integer">
+    select * from board where no = #{no}
+  </select>
+  <update id="updateHit"  parameterType="Integer">
+    update board set hit = hit + 1 where  no = #{no}
+  </update>
 </mapper>
