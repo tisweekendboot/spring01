@@ -16,7 +16,18 @@
     <header class="header">
       <div class="container">
         <h1><a href="">LOGO</a></h1>
-        <ul class="nav">
+        <ul class="nav" th:if="${session.loggedMember!=null}">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" th:text="${session.loggedMember.userName}"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">BOARD</a>
+          </li>
+        </ul>
+        <ul class="nav" th:unless="${session.loggedMember!=null}">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">HOME</a>
           </li>
@@ -24,7 +35,7 @@
             <a class="nav-link" href="/member/join">JOIN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">BOARD</a>
+            <a class="nav-link" href="/member/login">LOGIN</a>
           </li>
         </ul>
       </div>

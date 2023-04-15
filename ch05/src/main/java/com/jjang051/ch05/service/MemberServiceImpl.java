@@ -22,4 +22,10 @@ public class MemberServiceImpl implements MemberService {
     int result = memberDao.idCheck(memberDto);
     return result;
   }
+
+  @Override
+  public MemberDto loginMember(MemberDto memberDto) {
+    MemberDto loginMember = memberDao.loginMember(memberDto);
+    return loginMember;
+  }
 }

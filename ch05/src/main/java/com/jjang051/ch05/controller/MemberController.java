@@ -4,6 +4,7 @@ import com.jjang051.ch05.dto.MemberDto;
 import com.jjang051.ch05.service.MemberService;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,21 @@ public class MemberController {
     Map<String, Integer> resultMap = new HashMap<>();
     resultMap.put("result", result);
     return ResponseEntity.status(HttpStatus.OK).body(resultMap);
+  }
+
+  @GetMapping("/login")
+  public String login() {
+    return "/member/login";
+  }
+
+  @PostMapping("/login")
+  public String loginProcess(MemberDto memberDto, HttpSession session) {
+    MemberDto loggedMember = memberService.loginMember(memberDto);
+    if (loggedMember != null) {
+      session.setAttribute("loggedMember", loggedMember);
+      return "redirect:/";
+    }
+    //model.addAttribute("loggedMember", loggedMember);
+    return "redirect:/member/login";
   }
 }

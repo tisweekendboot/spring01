@@ -6,4 +6,5 @@ import com.jjang051.ch05.dto.MemberDto;
 public interface MemberService {
   int insertMember(MemberDto memberDto);
   int idCheck(MemberDto memberDto);
+  MemberDto loginMember(MemberDto memberDto);
 }

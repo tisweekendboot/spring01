@@ -9,4 +9,8 @@
   <select id="idCheck" parameterType="memberDto" resultType="Integer">
     select count(*) as count from member02 where userId = #{userId}
   </select>
+  
+  <select id="loginMember" parameterType="memberDto" resultType="memberDto">
+    select * from member02 where userid = #{userId} and  userpw = #{userPw}
+  </select>
 </mapper>

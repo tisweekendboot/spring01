@@ -33,6 +33,14 @@ a {
   align-items: center;
 }
 
+.main {
+  padding: 100px 0;
+  min-height: 500px;
+}
+.main .contents h2 {
+  margin-bottom: 50px;
+}
+
 .footer {
   display: flex;
   justify-content: center;
