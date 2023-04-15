@@ -69,3 +69,7 @@ a {
 .table td {
   padding: 15px;
 }
+
+#contents {
+  min-height: 300px;
+}
