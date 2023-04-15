@@ -35,11 +35,13 @@ public class MemberController {
   //@ResponseBody
   public String joinProcess(
     @Valid MemberDto memberDto,
-    BindingResult bindingResult
+    BindingResult bindingResult,
+    Model model
   ) {
     log.info("============memberDto===============");
     log.info(memberDto);
     if (bindingResult.hasErrors()) {
+      model.addAttribute("memberDto", memberDto);
       return "/member/join";
     }
     int result = memberService.insertMember(memberDto);
@@ -65,6 +67,6 @@ public class MemberController {
     log.info("result====" + result);
     Map<String, Integer> resultMap = new HashMap<>();
     resultMap.put("result", result);
-    return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(resultMap);
+    return ResponseEntity.status(HttpStatus.OK).body(resultMap);
   }
 }

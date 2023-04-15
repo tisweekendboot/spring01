@@ -12,7 +12,7 @@
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" />
+              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" th:value="${memberDto.userId}" />
               <button class="btn btn-secondary" type="button" id="btnIdCheck">ID 중복검사</button>
             </div>
             <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error">에러 메세지 출력</p>
@@ -20,19 +20,22 @@
 
           <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">USER PW</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" />
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" th:value="${memberDto.userPw}" />
+            <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput5" class="form-label">USER NAME</label>
-            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="USER NAME" name="userName" />
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="USER NAME" name="userName" th:value="${memberDto.userName}" />
+            <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error">에러 메세지 출력</p>
           </div>
 
           <div class="mb-3">
             <label for="exampleFormControlInput3" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" />
+            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" th:value="${memberDto.userEmail}" />
+            <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput4" class="form-label">Email address</label>
+            <label for="exampleFormControlInput4" class="form-label">ADDRESS</label>
             <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="ADDRESS" name="userAddr" />
           </div>
           <div class="text-center">
@@ -56,7 +59,12 @@
               if (response.result > 0) {
                 alert("쓸 수 없는 아이디입니다.");
               } else {
-                alert("사용가능한 아이디입니다.");
+                const isConfirm = confirm("사용가능한 아이디입니다. 사용하시겠습니까?");
+                if (isConfirm) {
+                  $("#userId").attr("readonly", true);
+                } else {
+                  $("#userId").val("");
+                }
               }
             },
             fail: function (err) {

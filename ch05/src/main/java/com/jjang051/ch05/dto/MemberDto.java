@@ -14,17 +14,19 @@ public class MemberDto {
   @Size(min = 5, max = 15, message = "좀 길게 적어 주세요")
   private String userId;
 
-  @NotBlank
-  @Size(min = 5, max = 15)
+  @NotBlank(message = "필수 입력 사항입니다.")
+  @Size(min = 2, max = 15)
   private String userPw;
 
-  @NotBlank
+  @NotBlank(message = "필수 입력 사항입니다.")
   @Size(min = 5, max = 15)
   private String userName;
 
+  @NotBlank(message = "필수 입력 사항입니다.")
   @Pattern(regexp = "^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
   private String userEmail;
 
   private String userAddr;
+
   private String regDate;
 }
