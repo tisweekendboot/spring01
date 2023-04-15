@@ -1,7 +1,51 @@
+@import "mixins";
+
 .form-box {
-  width:600px;
-  padding:20px;
-  border:1px solid #ccc;
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 10px;
   margin: 100px auto;
+}
+a {
+  text-decoration: none;
+}
+.header {
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+  .container {
+    max-width: 1640px;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav {
+      .nav-link {
+        height: 80px;
+        padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  p {
+    $color: #00a6e8;
+    padding: 10px 40px;
+    background-color: $color;
+    color: #fff;
+    border-radius: 100px;
+    overflow: hidden;
+    @include longShadow(30, darken($color, 10));
+  }
 }

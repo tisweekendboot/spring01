@@ -29,4 +29,8 @@ public class MemberDto {
   private String userAddr;
 
   private String regDate;
+
+  private int userZipcode;
+
+  private String userAddrEtc;
 }

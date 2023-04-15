@@ -4,11 +4,9 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jjang051.ch05.dao.MemberDao">
   <insert id="insertMember" parameterType="memberDto">
-    insert into member02 values (member02_seq.nextval,#{userId},#{userPw},#{userName},#{userEmail},#{userAddr},SYSDATE)
+    insert into member02 values (member02_seq.nextval,#{userId},#{userPw},#{userName},#{userEmail},#{userAddr},SYSDATE, #{userZipcode},#{userAddrEtc})
   </insert>
   <select id="idCheck" parameterType="memberDto" resultType="Integer">
     select count(*) as count from member02 where userId = #{userId}
   </select>
-  
-  
 </mapper>

@@ -35,16 +35,16 @@
             <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3 input-group">
-            <input type="text" class="form-control" id="zipCode" placeholder="ZIPCODE" name="userZipcode" />
+            <input type="text" class="form-control" id="zipCode" placeholder="ZIPCODE" name="userZipcode" readonly />
             <button class="btn btn-info" type="button" id="btnZipcode">우편번호</button>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput4" class="form-label">ADDRESS</label>
-            <input type="text" class="form-control" id="address" placeholder="ADDRESS" name="userAddr" />
+            <input type="text" class="form-control" id="address" placeholder="ADDRESS" name="userAddr" readonly />
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput4" class="form-label">ADDRESS ETC</label>
-            <input type="text" class="form-control" id="addressEtc" placeholder="ADDRESS ETC" name="userAddrEtc" />
+            <input type="text" class="form-control" id="addressEtc" placeholder="ADDRESS ETC" name="userAddrEtc" readonly />
           </div>
 
           <div class="text-center">
