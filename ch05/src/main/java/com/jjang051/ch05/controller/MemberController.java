@@ -100,9 +100,44 @@ public class MemberController {
   }
 
   @GetMapping("/modify")
-  public String modify(HttpSession session) {
-    //session.invalidate(); // session삭제
-    // 회원id(x),  이름 (0), 이메일 안됨(x), 주소(0)
+  public String modify(HttpSession session, Model model) {
+    // session값은 object이다. 형변화(up casting)
+    MemberDto loggedMember = (MemberDto) session.getAttribute("loggedMember");
+    model.addAttribute("memberDto", loggedMember);
     return "/member/modify";
+  }
+
+  @PostMapping("/modify")
+  public String modifyProcess(
+    @Valid MemberDto memberDto,
+    BindingResult bindingResult,
+    Model model,
+    HttpSession session
+  ) {
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("memberDto", memberDto);
+      return "/member/modify";
+    }
+    int result = memberService.modifyMember(memberDto);
+    session.setAttribute("loggedMember", memberDto);
+    //session.invalidate();
+    return "redirect:/";
+  }
+
+  @GetMapping("/delete")
+  public String delete() {
+    return "/member/delete";
+  }
+
+  @PostMapping("/delete")
+  public String deleteProcess(MemberDto memberDto, HttpSession session) {
+    log.info("134====" + memberDto.toString());
+    int result = memberService.deleteMember(memberDto);
+
+    if (result > 0) {
+      session.invalidate();
+      return "redirect:/";
+    }
+    return "/member/delete";
   }
 }

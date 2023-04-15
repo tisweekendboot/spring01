@@ -13,4 +13,16 @@
   <select id="loginMember" parameterType="memberDto" resultType="memberDto">
     select * from member02 where userid = #{userId} and  userpw = #{userPw}
   </select>
+  
+  <update id="modifyMember" parameterType="memberDto">
+    update member02 set username = #{userName}, 
+                    useraddr = #{userAddr}, 
+                    zipcode = #{zipcode}, 
+                    useraddretc = #{userAddrEtc} 
+            where userId = #{userId} and  userpw = #{userPw}
+  </update>
+  
+  <delete id="deleteMember" parameterType="memberDto">
+    delete from member02 where userId=#{userId} and userpw = #{userPw}
+  </delete>
 </mapper>

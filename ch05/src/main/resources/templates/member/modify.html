@@ -19,7 +19,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">USER PW</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" th:value="${memberDto.userPw}" />
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" />
             <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3">
