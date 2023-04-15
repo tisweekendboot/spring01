@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjang051.ch05.dao.BoardDao">
+  <insert id="writeBoard" parameterType="boardDto">
+    insert into board values (
+      BOARD_SEQ.NEXTVAL,
+      #{userName},
+      #{title},
+      #{contents},
+      #{boardGroup},
+      #{boardLevel},
+      #{boardStep},
+      SYSDATE,
+      0,
+      1,
+      #{userPw}
+    )
+  </insert>
+</mapper>

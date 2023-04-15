@@ -5,5 +5,6 @@
 <configuration>
   <typeAliases>
     <typeAlias type="com.jjang051.ch05.dto.MemberDto" alias="memberDto" />
+    <typeAlias type="com.jjang051.ch05.dto.BoardDto" alias="boardDto" />
   </typeAliases>
 </configuration>

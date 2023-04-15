@@ -19,9 +19,9 @@ public class BoardDto {
   @Size(min = 10, max = 3000, message = "10글자 이상 쓰셔야 합니다.")
   private String contents;
 
-  private int group;
-  private int level;
-  private int step;
+  private int boardGroup;
+  private int boardLevel;
+  private int boardStep;
 
   private String regDate;
   private int hit;
