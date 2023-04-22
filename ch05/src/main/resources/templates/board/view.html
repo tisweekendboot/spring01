@@ -8,7 +8,7 @@
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>BOARD VIEW</h2>
-        <table class="table table-striped">
+        <table class="table table-striped" id="view-table">
           <colgroup>
             <col />
             <col />
@@ -42,6 +42,7 @@
                                                          boardGroup=${boardDto.boardGroup},
                                                          boardLevel=${boardDto.boardLevel},
                                                          boardStep=${boardDto.boardStep})}" class="btn btn-primary">REPLY WRITE</a>
+          <a href="/" th:href="@{/board/delete(no=${boardDto.no})}" class="btn btn-secondary">DELETE</a>
           <a href="/" class="btn btn-secondary">HOME</a>
         </div>
       </div>

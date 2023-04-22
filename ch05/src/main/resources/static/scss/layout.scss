@@ -136,3 +136,36 @@ a {
     overflow: hidden;
   }
 }
+#view-table {
+  td {
+    text-align: left;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.error-page {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  img {
+    width: 500px;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    padding: 20px 40px;
+    font-weight: 700;
+    background-color: #0285c2;
+    color: #fff;
+    @include longShadow(30, darken(#0285c2, 10));
+    border-radius: 100px;
+    overflow: hidden;
+  }
+}
