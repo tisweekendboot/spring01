@@ -65,6 +65,10 @@
     ]]>
   </update>
   
+  <select id="getTotalCount" resultType="Integer">
+    select count(*) as count from board
+  </select>
+  
   
   
   

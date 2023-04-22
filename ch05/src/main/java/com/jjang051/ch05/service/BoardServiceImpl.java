@@ -2,6 +2,7 @@ package com.jjang051.ch05.service;
 
 import com.jjang051.ch05.dao.BoardDao;
 import com.jjang051.ch05.dto.BoardDto;
+import com.jjang051.ch05.dto.Criteria;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public List<BoardDto> getBoardList() {
-    List<BoardDto> boardList = boardDao.getBoardList();
+  public List<BoardDto> getBoardList(Criteria criteria) {
+    List<BoardDto> boardList = boardDao.getBoardList(criteria);
     return boardList;
   }
 
@@ -70,6 +71,12 @@ public class BoardServiceImpl implements BoardService {
 
     int result = boardDao.replyBoard(boardDto);
 
+    return result;
+  }
+
+  @Override
+  public int getTotalCount() {
+    int result = boardDao.getTotalCount();
     return result;
   }
 }

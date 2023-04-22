@@ -33,7 +33,7 @@
           </thead>
           <tbody>
             <tr th:each="item : ${boardList}">
-              <th th:text="${itemStat.count}">1</th>
+              <th th:text="${pageMaker.totalCount - itemStat.index + 1}">1</th>
               <td class="title">
                 <!-- prettier-ignore -->
                 <a href="" 
@@ -54,15 +54,19 @@
 
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item">
+            <!-- 이전 페이지 -->
+            <li class="page-item" th:if="${pageMaker.isPrev}">
               <a class="page-link" href="#" aria-label="Previous">
                 <span class="material-icons"> chevron_left </span>
               </a>
             </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
+            <!-- 여기가 반복 -->
+            <li class="page-item" th:each="pageNum : ${#numbers.sequence(pageMaker.beginPage,pageMaker.endPage)}">
+              <a class="page-link" href="#" th:href="@{/board/list(page=${pageNum})}" th:text="${pageNum}">1</a>
+            </li>
+
+            <!-- 다음 페이지 -->
+            <li class="page-item" th:if="${pageMaker.isNext}">
               <a class="page-link" href="#" aria-label="Next">
                 <span class="material-icons"> chevron_right </span>
               </a>

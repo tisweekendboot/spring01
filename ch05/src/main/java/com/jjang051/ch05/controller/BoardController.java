@@ -1,9 +1,12 @@
 package com.jjang051.ch05.controller;
 
 import com.jjang051.ch05.dto.BoardDto;
+import com.jjang051.ch05.dto.Criteria;
 import com.jjang051.ch05.service.BoardService;
+import com.jjang051.ch05.utils.PageMaker;
 import java.util.List;
 import javax.validation.Valid;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.stereotype.Controller;
@@ -15,10 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/board")
+@Log4j2
 public class BoardController {
 
   @Autowired
   BoardService boardService;
+
+  @Autowired
+  PageMaker pageMaker;
 
   @GetMapping("/write")
   public String write(Model model) {
@@ -27,11 +34,7 @@ public class BoardController {
   }
 
   @PostMapping("/write")
-  public String writeProcess(
-    @Valid BoardDto boardDto,
-    BindingResult bindingResult,
-    Model model
-  ) {
+  public String writeProcess(@Valid BoardDto boardDto, BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("boardDto", boardDto);
       return "/board/write";
@@ -41,9 +44,14 @@ public class BoardController {
   }
 
   @GetMapping("/list")
-  public String list(Model model) {
-    List<BoardDto> boardList = boardService.getBoardList();
+  public String list(Model model, Criteria criteria) {
+    List<BoardDto> boardList = boardService.getBoardList(criteria);
+    //Criteria customeCriteria = new Criteria(1, 8);
+    pageMaker.setCriteria(criteria);
+    pageMaker.setTotalCount(boardService.getTotalCount());
     model.addAttribute("boardList", boardList);
+    model.addAttribute("pageMaker", pageMaker);
+    log.info("pageMaker===={}", pageMaker.toString());
     return "/board/list";
   }
 
@@ -61,11 +69,7 @@ public class BoardController {
   }
 
   @PostMapping("/reply")
-  public String replyProcess(
-    @Valid BoardDto boardDto,
-    BindingResult bindingResult,
-    Model model
-  ) {
+  public String replyProcess(@Valid BoardDto boardDto, BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
       model.addAttribute("boardDto", boardDto);
       return "/board/write";
