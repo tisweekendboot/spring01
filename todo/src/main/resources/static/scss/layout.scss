@@ -1,0 +1,33 @@
+@import "mixins";
+header {
+  height: 50px;
+  background-color: #111;
+  color: #fff;
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    height: 50px;
+  }
+}
+.main {
+  padding: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  padding: 20px;
+  p {
+    $color: #00a6e8;
+    padding: 10px 40px;
+    background-color: $color;
+    color: #fff;
+    border-radius: 100px;
+    overflow: hidden;
+    font-size: 14px;
+    @include longShadow(30, darken($color, 10));
+  }
+}
