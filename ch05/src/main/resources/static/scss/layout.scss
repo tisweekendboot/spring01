@@ -70,6 +70,30 @@ a {
   th,
   td {
     padding: 15px;
+    text-align: center;
+  }
+  .title {
+    text-align: left;
+  }
+  .icon:before {
+    font-family: "Material Icons";
+    content: "\e5da";
+    display: inline-block;
+  }
+  .space1 {
+    padding-left: 0px;
+  }
+  .space2 {
+    padding-left: 30px;
+  }
+  .space3 {
+    padding-left: 60px;
+  }
+  .space4 {
+    padding-left: 90px;
+  }
+  .space5 {
+    padding-left: 120px;
   }
 }
 #contents {

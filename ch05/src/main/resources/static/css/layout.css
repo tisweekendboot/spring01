@@ -68,6 +68,30 @@ a {
 .table th,
 .table td {
   padding: 15px;
+  text-align: center;
+}
+.table .title {
+  text-align: left;
+}
+.table .icon:before {
+  font-family: "Material Icons";
+  content: "\e5da";
+  display: inline-block;
+}
+.table .space1 {
+  padding-left: 0px;
+}
+.table .space2 {
+  padding-left: 30px;
+}
+.table .space3 {
+  padding-left: 60px;
+}
+.table .space4 {
+  padding-left: 90px;
+}
+.table .space5 {
+  padding-left: 120px;
 }
 
 #contents {
