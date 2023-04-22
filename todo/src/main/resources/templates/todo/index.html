@@ -72,7 +72,7 @@
         let temp = "";
         $.each(array, function (idx, item) {
           temp += `
-          <li>
+          <li data-no="${item.no}">
             <span class="txt">${item.todo}</span>
             <button>DONE</button>
             <button class="btnDelete">DELETE</button>
@@ -83,8 +83,10 @@
 
       $(".todoList").on("click", ".btnDelete", function () {
         //alert("난 안떠요...");
+        const selectedNo = parseInt($(this).parent().data("no"));
+        const selectedItem = $(this).parent();
         const sendData = {
-          no: 1,
+          no: selectedNo,
         };
         $.ajax({
           url: "/todo/del",
@@ -92,6 +94,9 @@
           data: sendData,
           success: function (response) {
             console.log(response);
+            if (response.result === "ok") {
+              selectedItem.remove();
+            }
             //makeList(response);
           },
           error: function (err) {
