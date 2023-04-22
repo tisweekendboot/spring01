@@ -75,11 +75,32 @@
           <li>
             <span class="txt">${item.todo}</span>
             <button>DONE</button>
-            <button>DELETE</button>
+            <button class="btnDelete">DELETE</button>
           </li>`;
         });
         $(".todoList").html(temp);
       }
+
+      $(".todoList").on("click", ".btnDelete", function () {
+        //alert("난 안떠요...");
+        const sendData = {
+          no: 1,
+        };
+        $.ajax({
+          url: "/todo/del",
+          type: "POST",
+          data: sendData,
+          success: function (response) {
+            console.log(response);
+            //makeList(response);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+        });
+      });
+
+      // 비동기
     </script>
   </body>
 </html>

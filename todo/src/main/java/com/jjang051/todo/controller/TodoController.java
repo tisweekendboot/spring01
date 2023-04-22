@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @Controller
@@ -35,6 +36,19 @@ public class TodoController {
     if (result > 0) {
       List<TodoDto> todoList = todoService.getTodo(todoDto);
       return ResponseEntity.status(HttpStatus.OK).body(todoList);
+    }
+    Map<String, String> resultMap = new HashMap<>();
+    resultMap.put("error", "잘못된 값입니다.");
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resultMap);
+  }
+
+  @PostMapping("/del")
+  public ResponseEntity<Object> delete(TodoDto todoDto) {
+    int result = todoService.deleteTodo(todoDto);
+    if (result > 0) {
+      Map<String, String> resultMap = new HashMap<>();
+      resultMap.put("result", "ok");
+      return ResponseEntity.status(HttpStatus.OK).body(resultMap);
     }
     Map<String, String> resultMap = new HashMap<>();
     resultMap.put("error", "잘못된 값입니다.");

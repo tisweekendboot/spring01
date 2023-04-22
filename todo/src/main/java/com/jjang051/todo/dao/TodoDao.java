@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface TodoDao {
   int insertTodo(TodoDto todoDto);
   List<TodoDto> getTodo(TodoDto todoDto);
+  int deleteTodo(TodoDto todoDto);
 }

@@ -21,4 +21,9 @@ public class TodoServiceImpl implements TodoService {
   public int insertTodo(TodoDto todoDto) {
     return todoDao.insertTodo(todoDto);
   }
+
+  @Override
+  public int deleteTodo(TodoDto todoDto) {
+    return todoDao.deleteTodo(todoDto);
+  }
 }
