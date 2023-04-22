@@ -26,6 +26,10 @@
         <label for="datePicker" class="form-label">날짜를 선택해 주세요.</label>
         <input type="text" class="form-control" id="datePicker" placeholder="날짜를 선택해 주세요." />
       </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="할일을 입력해 주세요." aria-label="할일을 입력해 주세요." aria-describedby="btnAdd" />
+        <button class="btn btn-outline-secondary" type="button" id="btnAdd">ADD</button>
+      </div>
     </main>
 
     <footer class="footer">
@@ -38,6 +42,21 @@
         onSelect: function (date) {
           //document.getElementById("result-1").innerHTML = date.format("Do MMMM YYYY");
         },
+      });
+      //http - method  : POST,DELETE,PUT,GET
+      $("#btnAdd").on("click", function () {
+        //alert("할일을 입력합니다.");
+        $.ajax({
+          url: "/todo/add",
+          type: "POST",
+          data: { todo: "점심먹기", done: 0, pickedDate: "2023/04/22" },
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+        });
       });
     </script>
   </body>
