@@ -26,14 +26,14 @@
               <th scope="col">WRITER</th>
               <th scope="col">DATE</th>
               <th scope="col">HIT</th>
-              <th scope="col">GROUP</th>
+              <!-- <th scope="col">GROUP</th>
               <th scope="col">LEVEL</th>
-              <th scope="col">STEP</th>
+              <th scope="col">STEP</th> -->
             </tr>
           </thead>
           <tbody>
             <tr th:each="item : ${boardList}">
-              <th th:text="${item.no}">1</th>
+              <th th:text="${itemStat.count}">1</th>
               <td class="title">
                 <!-- prettier-ignore -->
                 <a href="" 
@@ -45,12 +45,31 @@
               <td th:text="${item.userName}">Otto</td>
               <td th:text="${item.regDate}">@mdo</td>
               <td th:text="${item.hit}">@mdo</td>
-              <td th:text="${item.boardGroup}">@mdo</td>
+              <!-- <td th:text="${item.boardGroup}">@mdo</td>
               <td th:text="${item.boardLevel}">@mdo</td>
-              <td th:text="${item.boardStep}">@mdo</td>
+              <td th:text="${item.boardStep}">@mdo</td> -->
             </tr>
           </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span class="material-icons"> chevron_left </span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span class="material-icons"> chevron_right </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
         <div class="mt-5 text-center">
           <a href="/board/write" class="btn btn-primary">WRITE</a>
           <a href="/" class="btn btn-secondary">HOME</a>
