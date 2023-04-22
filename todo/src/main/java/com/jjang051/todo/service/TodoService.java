@@ -1,11 +1,9 @@
-package com.jjang051.todo.dao;
+package com.jjang051.todo.service;
 
 import com.jjang051.todo.dto.TodoDto;
 import java.util.List;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface TodoDao {
+public interface TodoService {
   int insertTodo(TodoDto todoDto);
   List<TodoDto> getTodo(TodoDto todoDto);
 }

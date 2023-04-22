@@ -3,4 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jjang051.todo.dao.TodoDao">
+  <insert id="insertTodo" parameterType="todoDto">
+    insert into todo values (todo_seq.nextval,#{todo},#{done},#{pickedDate})
+  </insert>
+  <select id="getTodo" parameterType="todoDto" resultType="todoDto">
+    select * from todo where pickedDate = #{pickedDate} order by no desc
+  </select>
+  
 </mapper>

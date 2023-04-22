@@ -27,8 +27,12 @@
         <input type="text" class="form-control" id="datePicker" placeholder="날짜를 선택해 주세요." />
       </div>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="할일을 입력해 주세요." aria-label="할일을 입력해 주세요." aria-describedby="btnAdd" />
+        <input type="text" class="form-control" placeholder="할일을 입력해 주세요." aria-label="할일을 입력해 주세요." aria-describedby="btnAdd" id="todo" />
         <button class="btn btn-outline-secondary" type="button" id="btnAdd">ADD</button>
+      </div>
+
+      <div class="todoListBox">
+        <ul class="todoList"></ul>
       </div>
     </main>
 
@@ -46,18 +50,36 @@
       //http - method  : POST,DELETE,PUT,GET
       $("#btnAdd").on("click", function () {
         //alert("할일을 입력합니다.");
+        const sendData = {
+          todo: $("#todo").val(),
+          done: 0,
+          pickedDate: $("#datePicker").val(),
+        };
         $.ajax({
           url: "/todo/add",
           type: "POST",
-          data: { todo: "점심먹기", done: 0, pickedDate: "2023/04/22" },
+          data: sendData,
           success: function (response) {
             console.log(response);
+            makeList(response);
           },
           error: function (err) {
             console.log(err);
           },
         });
       });
+      function makeList(array) {
+        let temp = "";
+        $.each(array, function (idx, item) {
+          temp += `
+          <li>
+            <span class="txt">${item.todo}</span>
+            <button>DONE</button>
+            <button>DELETE</button>
+          </li>`;
+        });
+        $(".todoList").html(temp);
+      }
     </script>
   </body>
 </html>
