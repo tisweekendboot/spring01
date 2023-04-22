@@ -35,16 +35,16 @@
     )
   </insert>
   
-  <select id="getBoardList" resultType="boardDto">
+  <select id="getBoardList" resultType="boardDto" parameterType="criteria">
     <!-- select * from board order by no desc -->
     <!-- select b.* from
     (select * from board order by boardGroup desc, boardLevel asc) b -->
     <![CDATA[
-    select * from (
-      select rownum as num , b.* from
-          (select * from board order by boardGroup desc, boardLevel asc) b
-      ) 
-    where num >= 1 and num <= 5
+      select * from (
+        select rownum as num , b.* from
+            (select * from board order by boardGroup desc, boardLevel asc) b
+        ) 
+      where num >= #{beginPage} and num <= #{endPage}
     ]]>
   </select>
   <select id="getBoardOne" resultType="boardDto" parameterType="Integer">

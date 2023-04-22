@@ -19,4 +19,12 @@ public class Criteria {
     this.page = page;
     this.pageSize = pageSize;
   }
+
+  public int getBeginPage() {
+    return (page - 1) * pageSize + 1;
+  }
+
+  public int getEndPage() {
+    return page * pageSize;
+  }
 }
