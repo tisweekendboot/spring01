@@ -37,7 +37,13 @@
                   th:text="${item.title}" 
                   th:href="@{/board/view(no=${item.no})}" 
                   th:class="${item.boardStep > 1 ? 'icon':''}" 
-                  th:classappend="'space'+${item.boardStep}">제목일 들어옵니다.</a>
+                  th:classappend="'space'+${item.boardStep}"
+                  th:if="${item.available==1}"
+                  >제목이 들어옵니다.</a>
+                <!-- prettier-ignore -->
+                <span th:unless="${item.available==1}" 
+                        th:class="${item.boardStep > 1 ? 'icon':''}" 
+                        th:classappend="'space'+${item.boardStep}">삭제 되었습니다.</span>
               </td>
               <td th:text="${item.userName}">Otto</td>
               <td th:text="${item.regDate}">@mdo</td>

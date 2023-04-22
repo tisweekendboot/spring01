@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/board")
@@ -76,5 +77,23 @@ public class BoardController {
     }
     int result = boardService.replyBoard(boardDto);
     return "redirect:/board/list";
+  }
+
+  @GetMapping("/delete")
+  public String delete(Model model) {
+    model.addAttribute("boardDto", new BoardDto());
+    return "/board/delete";
+  }
+
+  @PostMapping("/delete")
+  public String deleteProcess(BoardDto boardDto, Model model, RedirectAttributes redirectAttributes) {
+    int result = boardService.deleteBoard(boardDto);
+    if (result > 0) {
+      return "redirect:/";
+    }
+    redirectAttributes.addFlashAttribute("isState", "show");
+    redirectAttributes.addFlashAttribute("msg", "비밀번호를 확인해 주세요.");
+    //model.addAttribute("boardDto", new BoardDto());
+    return "redirect:/board/delete?no=" + boardDto.getNo();
   }
 }

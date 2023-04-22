@@ -69,7 +69,9 @@
     select count(*) as count from board
   </select>
   
-  
+  <update id="deleteBoard" parameterType="boardDto">
+    update board set available = 0 where no=#{no} and userPw = #{userPw}
+  </update>
   
   
   

@@ -14,4 +14,5 @@ public interface BoardService {
   int replyBoard(BoardDto boardDto);
   int updateLevel(BoardDto boardDto);
   int getTotalCount();
+  int deleteBoard(BoardDto boardDto)
 }

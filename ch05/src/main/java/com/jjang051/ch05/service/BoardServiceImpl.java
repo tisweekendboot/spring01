@@ -79,4 +79,10 @@ public class BoardServiceImpl implements BoardService {
     int result = boardDao.getTotalCount();
     return result;
   }
+
+  @Override
+  public int deleteBoard(BoardDto boardDto) {
+    int result = boardDao.deleteBoard(boardDto);
+    return result;
+  }
 }

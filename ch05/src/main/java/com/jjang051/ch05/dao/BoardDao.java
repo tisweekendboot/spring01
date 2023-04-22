@@ -15,4 +15,5 @@ public interface BoardDao {
   int updateLevel(BoardDto boardDto);
   int replyBoard(BoardDto boardDto);
   int getTotalCount();
+  int deleteBoard(BoardDto boardDto);
 }
