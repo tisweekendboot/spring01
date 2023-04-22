@@ -12,7 +12,7 @@ public class Criteria {
 
   public Criteria() {
     page = 1;
-    pageSize = 5;
+    pageSize = 3;
   }
 
   public Criteria(int page, int pageSize) {

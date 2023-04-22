@@ -13,9 +13,10 @@ public class PageMaker {
   private int totalCount;
   private int beginPage;
   private int endPage;
-  private int paginationSize = 10; // 밑에꺼 한번에 보여지는 갯수
+  private int paginationSize = 2; // 밑에꺼 한번에 보여지는 갯수
   private boolean isPrev;
   private boolean isNext;
+  private int count;
 
   // 전체 게시물 수를 알게되면 만들 수 있다.
   public void setTotalCount(int totalCount) {
@@ -26,6 +27,7 @@ public class PageMaker {
   private void makePage() {
     endPage = (int) Math.ceil((criteria.getPage() / (double) paginationSize)) * paginationSize;
     beginPage = (endPage - paginationSize) + 1;
+    count = totalCount - (criteria.getPage() - 1) * criteria.getPageSize();
     if (beginPage <= 0) beginPage = 1;
     // totalCount = 55
     // criteria.getPageSize() = 10
