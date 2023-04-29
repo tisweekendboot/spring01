@@ -26,4 +26,9 @@ public class TodoServiceImpl implements TodoService {
   public int deleteTodo(TodoDto todoDto) {
     return todoDao.deleteTodo(todoDto);
   }
+
+  @Override
+  public List<TodoDto> getTodList(String pickedDate) {
+    return todoDao.getTodoList(pickedDate);
+  }
 }

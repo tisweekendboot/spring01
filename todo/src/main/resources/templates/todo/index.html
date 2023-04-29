@@ -40,11 +40,13 @@
       <p>all copyrights reserved by jjang051</p>
     </footer>
     <script>
+      //ajax
       const picker = new Lightpick({
         field: document.getElementById("datePicker"),
-        format: "YYYY/MM/DD",
+        format: "YYYYMMDD",
         onSelect: function (date) {
           //document.getElementById("result-1").innerHTML = date.format("Do MMMM YYYY");
+          loadData();
         },
       });
       //http - method  : POST,DELETE,PUT,GET
@@ -68,6 +70,24 @@
           },
         });
       });
+
+      // html method  /get/post/put/delete
+      function loadData() {
+        const sendData = {
+          pickedDate: $("#datePicker").val(),
+        };
+        $.ajax({
+          //     /todo/list/20230429
+          //     /todo/list?pickedDate=20230429
+
+          url: "/todo/list/" + sendData.pickedDate,
+          type: "GET",
+          success: function (response) {
+            makeList(response.todoList);
+          },
+        });
+      }
+
       function makeList(array) {
         let temp = "";
         $.each(array, function (idx, item) {
@@ -104,7 +124,8 @@
           },
         });
       });
-
+      picker.setDate(new Date());
+      loadData();
       // 비동기
     </script>
   </body>

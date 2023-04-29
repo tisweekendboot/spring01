@@ -14,4 +14,7 @@
     delete from todo where no = #{no}
   </delete>
   
+  <select id="getTodoList" parameterType="String" resultType="todoDto">
+    select * from todo where pickedDate = #{pickedDate} order by no desc
+  </select>
 </mapper>

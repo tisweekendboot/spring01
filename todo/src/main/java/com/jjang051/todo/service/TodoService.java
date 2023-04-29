@@ -7,4 +7,5 @@ public interface TodoService {
   int insertTodo(TodoDto todoDto);
   List<TodoDto> getTodo(TodoDto todoDto);
   int deleteTodo(TodoDto todoDto);
+  List<TodoDto> getTodList(String pickedDate);
 }

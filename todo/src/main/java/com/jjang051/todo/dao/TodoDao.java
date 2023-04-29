@@ -9,4 +9,5 @@ public interface TodoDao {
   int insertTodo(TodoDto todoDto);
   List<TodoDto> getTodo(TodoDto todoDto);
   int deleteTodo(TodoDto todoDto);
+  List<TodoDto> getTodoList(String pickedDate);
 }
