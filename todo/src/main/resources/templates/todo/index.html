@@ -92,9 +92,9 @@
         let temp = "";
         $.each(array, function (idx, item) {
           temp += `
-          <li data-no="${item.no}">
+          <li data-no="${item.no}" class="${item.done == 1 ? "done" : "undone"}">
             <span class="txt">${item.todo}</span>
-            <button>DONE</button>
+            <button class="btnDone">DONE</button>
             <button class="btnDelete">DELETE</button>
           </li>`;
         });
@@ -148,6 +148,42 @@
           },
         });
       });
+
+      // ajax통해서 list
+      $(".todoList").on("click", ".btnDone", function () {
+        //alert("난 안떠요...");
+        const selectedNo = parseInt($(this).parent().data("no"));
+        const selectedItem = $(this).parent();
+        const doneState = selectedItem.hasClass("done") ? 0 : 1;
+        const sendData = {
+          //no: selectedNo,
+          done: doneState,
+        };
+        $.ajax({
+          url: "/todo/modify/" + selectedNo,
+          type: "PUT",
+          data: sendData,
+          success: function (response) {
+            console.log(response);
+            if (response.result === "ok") {
+              //selectedItem.remove();
+              // 수정이 완료된 상태를 보장받는다.
+              if (selectedItem.hasClass("done")) {
+                selectedItem.removeClass("done").addClass("undone");
+                selectedItem.find(".btnDone").text("done");
+              } else {
+                selectedItem.removeClass("undone").addClass("done");
+                selectedItem.find(".btnDone").text("undone");
+              }
+            }
+            //makeList(response);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+        });
+      });
+
       picker.setDate(new Date());
       loadData();
       // 비동기

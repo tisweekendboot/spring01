@@ -36,4 +36,9 @@ public class TodoServiceImpl implements TodoService {
   public int deleteTodoPath(int no) {
     return todoDao.deleteTodoPath(no);
   }
+
+  @Override
+  public int modifyTodo(TodoDto todoDto) {
+    return todoDao.modifyTodo(todoDto);
+  }
 }

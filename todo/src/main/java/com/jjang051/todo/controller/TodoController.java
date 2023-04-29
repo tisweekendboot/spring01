@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,6 +64,23 @@ public class TodoController {
   public ResponseEntity<Object> delete(@PathVariable("no") int no) {
     log.info("no===={}", no);
     int result = todoService.deleteTodoPath(no);
+    if (result > 0) {
+      Map<String, String> resultMap = new HashMap<>();
+      resultMap.put("result", "ok");
+      return ResponseEntity.status(HttpStatus.OK).body(resultMap);
+    }
+    Map<String, String> resultMap = new HashMap<>();
+    resultMap.put("error", "잘못된 값입니다.");
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resultMap);
+  }
+
+  @PutMapping("/modify/{no}")
+  public ResponseEntity<Object> modify(@PathVariable("no") int no, int done) {
+    TodoDto todoDto = new TodoDto();
+    todoDto.setNo(no);
+    todoDto.setDone(done);
+    int result = todoService.modifyTodo(todoDto);
+    log.info("todoDto==={}", todoDto);
     if (result > 0) {
       Map<String, String> resultMap = new HashMap<>();
       resultMap.put("result", "ok");

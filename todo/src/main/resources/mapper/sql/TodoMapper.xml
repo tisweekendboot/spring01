@@ -21,4 +21,8 @@
   <delete id="deleteTodoPath" parameterType="Integer">
     delete from todo where no = #{no}
   </delete>
+  
+  <update id="modifyTodo" parameterType="todoDto">
+    update todo set done = #{done} where no = #{no}
+  </update>
 </mapper>
