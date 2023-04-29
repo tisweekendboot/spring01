@@ -94,8 +94,10 @@
           temp += `
           <li data-no="${item.no}" class="${item.done == 1 ? "done" : "undone"}">
             <span class="txt">${item.todo}</span>
-            <button class="btnDone">DONE</button>
-            <button class="btnDelete">DELETE</button>
+            <div class="btns">
+              <button class="btnDone"><span class="material-icons">done</span></button>
+              <button class="btnDelete"><span class="material-icons">delete</span></button>
+            </div>
           </li>`;
         });
         $(".todoList").html(temp);
@@ -127,8 +129,8 @@
       */
       $(".todoList").on("click", ".btnDelete", function () {
         //alert("난 안떠요...");
-        const selectedNo = parseInt($(this).parent().data("no"));
-        const selectedItem = $(this).parent();
+        const selectedNo = parseInt($(this).parents("li").data("no"));
+        const selectedItem = $(this).parents("li");
         const sendData = {
           no: selectedNo,
         };
@@ -152,8 +154,8 @@
       // ajax통해서 list
       $(".todoList").on("click", ".btnDone", function () {
         //alert("난 안떠요...");
-        const selectedNo = parseInt($(this).parent().data("no"));
-        const selectedItem = $(this).parent();
+        const selectedNo = parseInt($(this).parents("li").data("no"));
+        const selectedItem = $(this).parents("li");
         const doneState = selectedItem.hasClass("done") ? 0 : 1;
         const sendData = {
           //no: selectedNo,
