@@ -8,21 +8,30 @@
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>MEMBER DELETE</h2>
-        <form action="/member/delete" method="post">
+        <form action="/member/delete" th:object="${member}" method="post">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="USER ID" name="userId" th:value="${session.loggedMember.userId}" readonly />
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="username" name="username" th:value="${member.username}" readonly />
+            </div>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">에러 메세지 출력</p>
           </div>
 
           <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">USER PW</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" />
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="password" />
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">에러 메세지 출력</p>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput5" class="form-label">USER NAME</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="USER NAME" name="name" th:value="${member.name}" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">에러 메세지 출력</p>
           </div>
 
           <div class="text-center">
-            <button class="btn btn-primary">DELETE</button>
+            <button class="btn btn-primary">DELETE CONFIRM</button>
             <button class="btn btn-secondary" type="reset">RESET</button>
-            <a href="/" class="btn btn-primary">HOME</a>
+            <a class="btn btn-secondary" href="/">HOME</a>
           </div>
         </form>
       </div>

@@ -7,30 +7,30 @@
     <div layout:fragment="contents">
       <div class="container">
         <!-- 여기서 부터 달라지는 내용 -->
-        <h2>MEMBER JOIN</h2>
-        <form action="/member/modify" th:object="${memberDto}" method="post">
+        <h2>MEMBER INFO</h2>
+        <form action="/member/modify" th:object="${member}" method="post">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">USER ID</label>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="userId" name="userId" th:value="${memberDto.userId}" readonly />
+              <input type="text" class="form-control" placeholder="id를 입력해 주세요." aria-label="Recipient's username" aria-describedby="button-addon2" id="username" name="username" th:value="${member.username}" readonly />
             </div>
-            <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error">에러 메세지 출력</p>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error">에러 메세지 출력</p>
           </div>
 
           <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">USER PW</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" />
-            <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" class="error">에러 메세지 출력</p>
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="password" />
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput5" class="form-label">USER NAME</label>
-            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="USER NAME" name="userName" th:value="${memberDto.userName}" />
-            <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error">에러 메세지 출력</p>
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="USER NAME" name="name" th:value="${member.name}" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">에러 메세지 출력</p>
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="exampleFormControlInput3" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" th:value="${memberDto.userEmail}" readonly />
+            <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com" name="userEmail" th:value="${member.userEmail}" readonly />
             <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="error">에러 메세지 출력</p>
           </div>
           <div class="mb-3 input-group">
@@ -44,7 +44,7 @@
           <div class="mb-3">
             <label for="exampleFormControlInput4" class="form-label">ADDRESS ETC</label>
             <input type="text" class="form-control" id="addressEtc" placeholder="ADDRESS ETC" name="userAddrEtc" readonly />
-          </div>
+          </div> -->
 
           <div class="text-center">
             <button class="btn btn-primary">MODIFY CONFIRM</button>
@@ -114,10 +114,10 @@
         $("#btnIdCheck").on("click", function () {
           //alert("id check");
           //ajax
-          const sendUserId = $("#userId").val();
+          const sendusername = $("#username").val();
           $.ajax({
             url: "/member/idCheck",
-            data: { userId: sendUserId },
+            data: { username: sendusername },
             type: "post",
             success: function (response) {
               //console.log(response);
@@ -126,9 +126,9 @@
               } else {
                 const isConfirm = confirm("사용가능한 아이디입니다. 사용하시겠습니까?");
                 if (isConfirm) {
-                  $("#userId").attr("readonly", true);
+                  $("#username").attr("readonly", true);
                 } else {
-                  $("#userId").val("");
+                  $("#username").val("");
                 }
               }
             },

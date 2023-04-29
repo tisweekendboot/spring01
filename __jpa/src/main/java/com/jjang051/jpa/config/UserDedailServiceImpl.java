@@ -1,12 +1,15 @@
 package com.jjang051.jpa.config;
 
+import com.jjang051.jpa.entity.CustomUser;
 import com.jjang051.jpa.entity.Member03;
 import com.jjang051.jpa.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserDedailServiceImpl implements UserDetailsService {
 
   @Autowired

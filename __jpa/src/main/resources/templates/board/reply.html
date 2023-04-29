@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.thymeleaf.org" layout:decorate="~{/layout/layout.html}">
+  <head>
+    <title>HOME</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container">
+        <!-- 여기서 부터 달라지는 내용 -->
+        <h2>BOARD WRITE</h2>
+        <form action="/board/reply" th:object="${boardDto}" method="post">
+          <input type="hidden" name="boardGroup" th:value="${param.boardGroup}" />
+          <input type="hidden" name="boardLevel" th:value="${param.boardLevel}" />
+          <input type="hidden" name="boardStep" th:value="${param.boardStep}" />
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">USER NAME</label>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="이름를 입력해 주세요." aria-label="username" aria-describedby="button-addon2" id="userName" name="userName" th:value="${boardDto.userName}" />
+            </div>
+            <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error">에러 메세지 출력</p>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput5" class="form-label">TITLE</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="제목을 입력해 주세요." name="title" th:value="${boardDto.title}" />
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error">에러 메세지 출력</p>
+          </div>
+          <div class="mb-3">
+            <label for="contents" class="form-label">CONTENTS</label>
+            <textarea class="form-control" id="contents" placeholder="내용을 입력해 주세요." name="contents" th:value="${boardDto.contents}"></textarea>
+            <p th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}" class="error">에러 메세지 출력</p>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">USER PW</label>
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="userPw" th:value="${boardDto.userPw}" />
+            <p th:if="${#fields.hasErrors('userPw')}" th:errors="*{userPw}" class="error">에러 메세지 출력</p>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary">WRITE</button>
+            <button class="btn btn-secondary" type="reset">RESET</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

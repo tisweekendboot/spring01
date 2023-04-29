@@ -16,25 +16,27 @@
           <tbody>
             <tr>
               <th scope="row">ID</th>
-              <td th:text="${session.loggedMember.userId}">jjang051</td>
+              <!-- <td th:text="${session.loggedMember.username}">jjang051</td> -->
+              <td sec:authentication="principal.member.username">jjang051</td>
             </tr>
             <tr>
               <th scope="row">USER NAME</th>
-              <td th:text="${session.loggedMember.userName}">장성호입니다.</td>
+              <!-- <td th:text="${session.loggedMember.name}">장성호입니다.</td> -->
+              <td sec:authentication="principal.member.name">장성호입니다.</td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <th scope="row">USER EMAIL</th>
               <td th:text="${session.loggedMember.userEmail}">jjang051@hanmail.net</td>
-            </tr>
-            <tr>
+            </tr> -->
+            <!-- <tr>
               <th scope="row">USER ZIPCODE</th>
               <td th:text="${session.loggedMember.zipcode}">12345</td>
-            </tr>
-            <tr>
+            </tr> -->
+            <!-- <tr>
               <th scope="row">ADDRESS</th>
               <td th:text="${session.loggedMember.userAddr}">판교!!!!!!!</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
         <div class="btns text-center mt-5">
@@ -103,10 +105,10 @@
         $("#btnIdCheck").on("click", function () {
           //alert("id check");
           //ajax
-          const sendUserId = $("#userId").val();
+          const sendusername = $("#username").val();
           $.ajax({
             url: "/member/idCheck",
-            data: { userId: sendUserId },
+            data: { username: sendusername },
             type: "post",
             success: function (response) {
               //console.log(response);
@@ -115,9 +117,9 @@
               } else {
                 const isConfirm = confirm("사용가능한 아이디입니다. 사용하시겠습니까?");
                 if (isConfirm) {
-                  $("#userId").attr("readonly", true);
+                  $("#username").attr("readonly", true);
                 } else {
-                  $("#userId").val("");
+                  $("#username").val("");
                 }
               }
             },

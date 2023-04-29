@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.thymeleaf.org" layout:decorate="~{/layout/layout.html}">
+  <head>
+    <title>HOME</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container">
+        <!-- 여기서 부터 달라지는 내용 -->
+        <h2>BOARD DELETE</h2>
+        <form action="/board/delete" th:object="${board}" method="post">
+          <input type="hidden" name="no" th:value="${param.no}" />
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">USER PW</label>
+            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="USER PASSWORD" name="password" th:value="${board.password}" />
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary">CONFIRM</button>
+            <a href="/board/list" class="btn btn-secondary">LIST</a>
+          </div>
+        </form>
+      </div>
+      <div class="modal fade" tabindex="-1" id="msgModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">&#128681;TITLE&#128681;</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p id="msg" th:text="${msg}">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <script th:inline="javascript">
+        let isState = [[${isState}]];
+        const msgModal = new bootstrap.Modal("#msgModal");
+        if(isState==="show"){
+          msgModal.show();
+        }
+      </script>
+    </div>
+  </body>
+</html>

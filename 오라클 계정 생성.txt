@@ -1,0 +1,19 @@
+aws ec2에 오라클 설치하고
+
+cmd 열어서
+sqlplus / as sysdba
+
+create user tisweekend02 identified by 1234;
+grant connect, resource to tisweekend02;
+
+
+서버에 jdk랑 오라클 설치하고
+찾기에서 env 환경변수 설정으로 들어감
+JAVA_HOME 설치하고 path 설정
+start java -jar jpa.jar
+
+찾기에서 firewall  검색해서
+inbound rules에 new rule 찾아서 
+원하는 port열어야함...
+
+

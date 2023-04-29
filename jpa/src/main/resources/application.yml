@@ -1,5 +1,5 @@
 server: 
-  port: 9094
+  port: 9093
 
 spring:
   output:
@@ -9,30 +9,38 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver  
     url: jdbc:oracle:thin:@localhost:1521:xe  
-    username: tisweekend
+    username: tisjpa
     password: 1234
+    # hikari:
+    #     idle-timeout: 10000
+    #     maximum-pool-size: 10
+    #     minimum-idle: 5
+    #     pool-name: BaseHikariPool
+  
   jpa:
-      open-in-view: true
-      show-sql: true
-      database: oracle
-      database-platform:  org.hibernate.dialect.Oracle10gDialect
-      hibernate:
-        ddl-auto: update   #create
-        naming:
-          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  
-  
-  security: 
+    open-in-view: true
+    show-sql: true
+    database: oracle
+    database-platform:  org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: update   #create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  
+        
+  security:
     user:
-      name: jjang051
-      password: 1234
+      name: user
+      password: 1234    
   
   
-  
+    
+
 #ERROR > WARN > DEBUG > INFO > TRACE
 logging:
   level:
     root: INFO  
-    '[com.jjang051.ch05]': DEBUG
+    "[com.jjang051.ch05]": DEBUG
+    "[org.hibernate.SQL]":  DEBUG
 
 # mybatis:
 #   mapper-locations: classpath:mapper/sql/**/*.xml

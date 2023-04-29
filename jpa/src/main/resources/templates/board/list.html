@@ -9,14 +9,24 @@
         <!-- 여기서 부터 달라지는 내용 -->
         <h2>BOARD LIST</h2>
 
-        <form action="/board/search" method="get" class="justify-content-end d-flex row">
-          <div class="mb-3 col-4">
-            <input type="text" class="form-control" placeholder="검색어를 입력해 주세요." name="search" />
+        <!-- <form class="form-inline d-flex justify-content-end mb-5" method="GET" th:action="@{/board/list}">
+          <div class="form-group mb-2">
+            <label for="searchText" class="sr-only">검색</label>
+            <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}" />
+          </div>
+          <button type="submit" class="btn btn-light mb-2">검색</button>
+        </form> -->
+
+        <form class="row g-3 justify-content-end" method="GET" th:action="@{/board/list03}">
+          <div class="col-4">
+            <label for="searchText" class="visually-hidden">검색</label>
+            <input type="text" class="form-control" id="searchText" name="searchText" placeholder="search" th:value="${param.searchText}" />
           </div>
           <div class="col-auto">
-            <button class="btn btn-primary">SEARCH</button>
+            <button type="submit" class="btn btn-primary mb-3">SEARCH</button>
           </div>
         </form>
+        <div class="text-end mb-2">TOTAL : <span th:text="${totalCount}">10</span></div>
         <table class="table table-striped">
           <colgroup>
             <col style="width: 100px" />
@@ -39,21 +49,42 @@
           </thead>
           <tbody>
             <tr th:each="item : ${boardList}">
-              <th>1</th>
+              <th th:text="${item.idx}">1</th>
               <td class="title">
                 <!-- prettier-ignore -->
                 <a href="" 
                   th:text="${item.title}" 
-                  th:href="@{/board/view(no=${item.no})}" 
+                  th:href="@{/board/view(idx=${item.idx})}" 
                   >제목이 들어옵니다.</a>
                 <!-- prettier-ignore -->
               </td>
               <td th:text="${item.writer}">Otto</td>
-              <td th:text="${item.regDate}">@mdo</td>
-              <td th:text="${item.hit}">@mdo</td>
+              <!-- <td th:text="${item.indate}">@mdo</td> -->
+              <!-- <td th:text="${#dates.format(item.indate, 'YYYY/MM/dd HH:mm')}">@mdo</td> -->
+              <td th:text="${#temporals.format(item.createDate, 'YYYY/MM/dd HH:mm')}">@mdo</td>
+              <td th:text="${item.count}">@mdo</td>
             </tr>
           </tbody>
         </table>
+        <nav aria-label="Page navigation example" th:if="${totalCount>=1}">
+          <ul class="pagination">
+            <li class="page-item" th:if="${1!=currentPage+1}">
+              <a class="page-link" href="#" aria-label="Previous" th:href="@{/board/list02(page=${currentPage-1},searchText=${param.searchText})}">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item" th:classappend="${num==currentPage+1}?'active'" th:each="num : ${#numbers.sequence(startPage,endPage)}"><a class="page-link" href="#" th:text="${num}" th:href="@{/board/list02(page=${num-1},searchText=${param.searchText})}">1</a></li>
+
+            <li class="page-item" th:if="${totalPage!=currentPage+1}">
+              <a class="page-link" href="#" aria-label="Next" th:href="@{/board/list02(page=${currentPage+1},searchText=${param.searchText})}">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div th:unless="${totalCount>=1}">
+          <p class="text-center mt-5">결과가 없습니다.</p>
+        </div>
         <div class="mt-5 text-center">
           <a href="/board/write" class="btn btn-primary">WRITE</a>
           <a href="/" class="btn btn-secondary">HOME</a>
