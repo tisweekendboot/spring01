@@ -17,4 +17,8 @@
   <select id="getTodoList" parameterType="String" resultType="todoDto">
     select * from todo where pickedDate = #{pickedDate} order by no desc
   </select>
+  
+  <delete id="deleteTodoPath" parameterType="Integer">
+    delete from todo where no = #{no}
+  </delete>
 </mapper>

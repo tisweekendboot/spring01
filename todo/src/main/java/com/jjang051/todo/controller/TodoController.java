@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +49,20 @@ public class TodoController {
   @PostMapping("/del")
   public ResponseEntity<Object> delete(TodoDto todoDto) {
     int result = todoService.deleteTodo(todoDto);
+    if (result > 0) {
+      Map<String, String> resultMap = new HashMap<>();
+      resultMap.put("result", "ok");
+      return ResponseEntity.status(HttpStatus.OK).body(resultMap);
+    }
+    Map<String, String> resultMap = new HashMap<>();
+    resultMap.put("error", "잘못된 값입니다.");
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resultMap);
+  }
+
+  @DeleteMapping("/del/{no}")
+  public ResponseEntity<Object> delete(@PathVariable("no") int no) {
+    log.info("no===={}", no);
+    int result = todoService.deleteTodoPath(no);
     if (result > 0) {
       Map<String, String> resultMap = new HashMap<>();
       resultMap.put("result", "ok");

@@ -31,4 +31,9 @@ public class TodoServiceImpl implements TodoService {
   public List<TodoDto> getTodList(String pickedDate) {
     return todoDao.getTodoList(pickedDate);
   }
+
+  @Override
+  public int deleteTodoPath(int no) {
+    return todoDao.deleteTodoPath(no);
+  }
 }

@@ -10,4 +10,5 @@ public interface TodoDao {
   List<TodoDto> getTodo(TodoDto todoDto);
   int deleteTodo(TodoDto todoDto);
   List<TodoDto> getTodoList(String pickedDate);
+  int deleteTodoPath(int no);
 }

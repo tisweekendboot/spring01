@@ -100,7 +100,7 @@
         });
         $(".todoList").html(temp);
       }
-
+      /*
       $(".todoList").on("click", ".btnDelete", function () {
         //alert("난 안떠요...");
         const selectedNo = parseInt($(this).parent().data("no"));
@@ -111,6 +111,30 @@
         $.ajax({
           url: "/todo/del",
           type: "POST",
+          data: sendData,
+          success: function (response) {
+            console.log(response);
+            if (response.result === "ok") {
+              selectedItem.remove();
+            }
+            //makeList(response);
+          },
+          error: function (err) {
+            console.log(err);
+          },
+        });
+      });
+      */
+      $(".todoList").on("click", ".btnDelete", function () {
+        //alert("난 안떠요...");
+        const selectedNo = parseInt($(this).parent().data("no"));
+        const selectedItem = $(this).parent();
+        const sendData = {
+          no: selectedNo,
+        };
+        $.ajax({
+          url: "/todo/del/" + sendData.no,
+          type: "DELETE",
           data: sendData,
           success: function (response) {
             console.log(response);

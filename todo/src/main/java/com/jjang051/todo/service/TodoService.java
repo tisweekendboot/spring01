@@ -8,4 +8,5 @@ public interface TodoService {
   List<TodoDto> getTodo(TodoDto todoDto);
   int deleteTodo(TodoDto todoDto);
   List<TodoDto> getTodList(String pickedDate);
+  int deleteTodoPath(int no);
 }
