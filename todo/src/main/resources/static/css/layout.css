@@ -40,8 +40,23 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 10px 0;
   border-bottom: 1px solid #ccc;
+  position: relative;
+}
+.todoList li.done:before {
+  width: 280px;
+}
+.todoList li:before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #f00;
+  border-radius: 100px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transition: all 0.25s ease;
 }
 .todoList li button {
   background: none;

@@ -62,7 +62,7 @@
           type: "POST",
           data: sendData,
           success: function (response) {
-            console.log(response);
+            $("#todo").val("");
             makeList(response);
           },
           error: function (err) {
@@ -172,10 +172,10 @@
               // 수정이 완료된 상태를 보장받는다.
               if (selectedItem.hasClass("done")) {
                 selectedItem.removeClass("done").addClass("undone");
-                selectedItem.find(".btnDone").text("done");
+                //selectedItem.find(".btnDone").text("done");
               } else {
                 selectedItem.removeClass("undone").addClass("done");
-                selectedItem.find(".btnDone").text("undone");
+                //selectedItem.find(".btnDone").text("undone");
               }
             }
             //makeList(response);
