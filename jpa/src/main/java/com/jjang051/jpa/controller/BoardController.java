@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/board")
@@ -59,5 +60,19 @@ public class BoardController {
       return "redirect:/board/list";
     }
     return "redirect:/board/delete?no=" + board.getNo();
+  }
+
+  @GetMapping("/writer")
+  public String writer(Model model, String writer) {
+    List<Board02> boardList = boardService.findByWriter(writer);
+    model.addAttribute("boardList", boardList);
+    return "/board/list";
+  }
+
+  @GetMapping("/search")
+  public String search(Model model, String search) {
+    List<Board02> boardList = boardService.searchTitle(search);
+    model.addAttribute("boardList", boardList);
+    return "/board/list";
   }
 }

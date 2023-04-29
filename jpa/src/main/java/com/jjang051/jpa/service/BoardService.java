@@ -11,4 +11,8 @@ public interface BoardService {
   public Board02 getBoard(int no);
 
   public int deleteWithPassword(Board02 board);
+
+  public List<Board02> findByWriter(String writer);
+
+  public List<Board02> searchTitle(String search);
 }

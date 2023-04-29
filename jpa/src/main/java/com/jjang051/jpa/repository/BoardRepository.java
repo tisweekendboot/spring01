@@ -24,6 +24,11 @@ public interface BoardRepository extends JpaRepository<Board02, Integer> {
 
   public List<Board02> findByWriter(String writer);
 
+  public List<Board02> findByTitleContainingOrContentsContaining(
+    String title,
+    String contents
+  );
+
   @Query(
     value = "delete from board02 where no = :#{#paramBoard.no} and password = :#{#paramBoard.password}",
     nativeQuery = true

@@ -33,4 +33,17 @@ public class BoardServiceImpl implements BoardService {
   public int deleteWithPassword(Board02 board) {
     return boardRepository.deleteWithPassword(board);
   }
+
+  @Override
+  public List<Board02> findByWriter(String writer) {
+    return boardRepository.findByWriter(writer);
+  }
+
+  @Override
+  public List<Board02> searchTitle(String search) {
+    return boardRepository.findByTitleContainingOrContentsContaining(
+      search,
+      search
+    );
+  }
 }
