@@ -21,10 +21,10 @@ spring:
         naming:
           physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  
   
-  # security: 
-  #   user:
-  #     name: jjang051
-  #     password: 1234
+  security: 
+    user:
+      name: jjang051
+      password: 1234
   
   
   
