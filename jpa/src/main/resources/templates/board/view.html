@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.thymeleaf.org" layout:decorate="~{/layout/layout.html}">
+  <head>
+    <title>HOME</title>
+  </head>
+  <body>
+    <div layout:fragment="contents">
+      <div class="container">
+        <!-- 여기서 부터 달라지는 내용 -->
+        <h2>BOARD VIEW</h2>
+        <table class="table table-striped" id="view-table">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <tbody>
+            <tr>
+              <th>TITLE</th>
+              <td colspan="3" th:text="${boardDto.title}">제목 들어갑니다.</td>
+            </tr>
+            <tr>
+              <th>WRITER</th>
+              <td colspan="3" th:text="${boardDto.userName}">글쓴 사람 들어갑니다.</td>
+            </tr>
+            <tr>
+              <th>DATE</th>
+              <td th:text="${boardDto.regDate}">2023/04/15</td>
+              <th>HIT</th>
+              <td th:text="${boardDto.hit}">1000000</td>
+            </tr>
+            <tr>
+              <th>CONTENTS</th>
+              <td colspan="3" th:text="${boardDto.contents}">내용이 들어갑니다.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-5 text-center">
+          <!-- prettier-ignore -->
+          <a href="/board/reply" th:href="@{/board/reply(no=${boardDto.no},
+                                                         boardGroup=${boardDto.boardGroup},
+                                                         boardLevel=${boardDto.boardLevel},
+                                                         boardStep=${boardDto.boardStep})}" class="btn btn-primary">REPLY WRITE</a>
+          <a href="/" th:href="@{/board/delete(no=${boardDto.no})}" class="btn btn-secondary">DELETE</a>
+          <a href="/" class="btn btn-secondary">HOME</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

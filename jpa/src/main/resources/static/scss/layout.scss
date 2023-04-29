@@ -1,0 +1,171 @@
+@import "mixins";
+
+.form-box {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 100px auto;
+}
+a {
+  text-decoration: none;
+}
+.header {
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+  .container {
+    max-width: 1640px;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav {
+      .nav-link {
+        height: 80px;
+        padding: 0 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.main {
+  padding: 100px 0;
+  min-height: 500px;
+  .contents {
+    h2 {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  p {
+    $color: #00a6e8;
+    padding: 10px 40px;
+    background-color: $color;
+    color: #fff;
+    border-radius: 100px;
+    overflow: hidden;
+    @include longShadow(30, darken($color, 10));
+  }
+}
+.table {
+  border-top: 2px solid #000;
+  .th {
+    width: 150px;
+    background-color: #eee;
+  }
+  .td {
+    padding: 15px;
+  }
+  th,
+  td {
+    padding: 15px;
+    text-align: center;
+  }
+  .title {
+    text-align: left;
+  }
+  .icon:before {
+    font-family: "Material Icons";
+    content: "\e5da";
+    display: inline-block;
+  }
+  .space1 {
+    padding-left: 0px;
+  }
+  .space2 {
+    padding-left: 30px;
+  }
+  .space3 {
+    padding-left: 60px;
+  }
+  .space4 {
+    padding-left: 90px;
+  }
+  .space5 {
+    padding-left: 120px;
+  }
+}
+#contents {
+  min-height: 300px;
+}
+
+.error {
+  font-size: 14px;
+  color: #f00;
+  margin-top: 10px;
+  &:before {
+    content: "*";
+    display: inline-block;
+  }
+}
+
+#myPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .page-item {
+    &.active {
+      a {
+        font-weight: 700;
+        background-color: #0285c2;
+        color: #fff;
+        @include longShadow(30, darken(#0285c2, 10));
+      }
+    }
+  }
+  .page-link {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0 5px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+}
+#view-table {
+  td {
+    text-align: left;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.error-page {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  img {
+    width: 500px;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    padding: 20px 40px;
+    font-weight: 700;
+    background-color: #0285c2;
+    color: #fff;
+    @include longShadow(30, darken(#0285c2, 10));
+    border-radius: 100px;
+    overflow: hidden;
+  }
+}
