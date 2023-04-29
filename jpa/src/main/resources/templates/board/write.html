@@ -10,6 +10,11 @@
         <h2>BOARD WRITE</h2>
         <form action="/board/write" th:object="${board}" method="post">
           <div class="mb-3">
+            <label for="exampleFormControlInput5" class="form-label">WRITER</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="이름을 입력해 주세요." name="writer" th:value="${board.writer}" />
+            <p th:if="${#fields.hasErrors('writer')}" th:errors="*{title}" class="error">에러 메세지 출력</p>
+          </div>
+          <div class="mb-3">
             <label for="exampleFormControlInput5" class="form-label">TITLE</label>
             <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="제목을 입력해 주세요." name="title" th:value="${board.title}" />
             <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error">에러 메세지 출력</p>

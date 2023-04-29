@@ -30,53 +30,21 @@
           </thead>
           <tbody>
             <tr th:each="item : ${boardList}">
-              <th th:text="${pageMaker.count - itemStat.index}">1</th>
+              <th>1</th>
               <td class="title">
                 <!-- prettier-ignore -->
                 <a href="" 
                   th:text="${item.title}" 
                   th:href="@{/board/view(no=${item.no})}" 
-                  th:class="${item.boardStep > 1 ? 'icon':''}" 
-                  th:classappend="'space'+${item.boardStep}"
-                  th:if="${item.available==1}"
                   >제목이 들어옵니다.</a>
                 <!-- prettier-ignore -->
-                <span th:unless="${item.available==1}" 
-                        th:class="${item.boardStep > 1 ? 'icon':''}" 
-                        th:classappend="'space'+${item.boardStep}">삭제 되었습니다.</span>
               </td>
-              <td th:text="${item.userName}">Otto</td>
+              <td th:text="${item.writer}">Otto</td>
               <td th:text="${item.regDate}">@mdo</td>
               <td th:text="${item.hit}">@mdo</td>
-              <!-- <td th:text="${item.boardGroup}">@mdo</td>
-              <td th:text="${item.boardLevel}">@mdo</td>
-              <td th:text="${item.boardStep}">@mdo</td> -->
             </tr>
           </tbody>
         </table>
-
-        <nav aria-label="Page navigation example">
-          <ul class="pagination" id="myPagination">
-            <!-- 이전 페이지 -->
-            <li class="page-item" th:if="${pageMaker.isPrev}">
-              <a class="page-link" href="#" th:href="@{/board/list(page=${pageMaker.beginPage - 1})}" aria-label="Previous">
-                <span class="material-icons"> chevron_left </span>
-              </a>
-            </li>
-            <!-- 여기가 반복 -->
-            <li class="page-item" th:each="pageNum : ${#numbers.sequence(pageMaker.beginPage,pageMaker.endPage)}" th:classappend="${pageMaker.criteria.page==pageNum?'active':''}">
-              <a class="page-link" href="#" th:href="@{/board/list(page=${pageNum})}" th:text="${pageNum}">1</a>
-            </li>
-
-            <!-- 다음 페이지 -->
-            <li class="page-item" th:if="${pageMaker.isNext}">
-              <a class="page-link" href="#" th:href="@{/board/list(page=${pageMaker.endPage + 1})}" aria-label="Next">
-                <span class="material-icons"> chevron_right </span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-
         <div class="mt-5 text-center">
           <a href="/board/write" class="btn btn-primary">WRITE</a>
           <a href="/" class="btn btn-secondary">HOME</a>

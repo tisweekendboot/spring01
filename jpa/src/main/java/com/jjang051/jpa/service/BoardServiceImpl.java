@@ -2,6 +2,7 @@ package com.jjang051.jpa.service;
 
 import com.jjang051.jpa.entity.Board02;
 import com.jjang051.jpa.repository.BoardRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +16,16 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public void write(Board02 board) {
     boardRepository.save(board);
+    // insert, update
+  }
+
+  @Override
+  public List<Board02> getList() {
+    return boardRepository.findAll();
+  }
+
+  @Override
+  public Board02 getBoard(int no) {
+    return boardRepository.findById(no).get();
   }
 }
