@@ -9,4 +9,6 @@ public interface BoardService {
   public List<Board02> getList();
 
   public Board02 getBoard(int no);
+
+  public int deleteWithPassword(Board02 board);
 }

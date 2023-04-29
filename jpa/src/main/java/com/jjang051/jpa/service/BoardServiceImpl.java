@@ -28,4 +28,9 @@ public class BoardServiceImpl implements BoardService {
   public Board02 getBoard(int no) {
     return boardRepository.findById(no).get();
   }
+
+  @Override
+  public int deleteWithPassword(Board02 board) {
+    return boardRepository.deleteWithPassword(board);
+  }
 }
